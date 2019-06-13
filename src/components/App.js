@@ -4,6 +4,7 @@ import Tab from '@material-ui/core/Tab';
 import AddPage from './AddPage';
 import ListPage from './ListPage';
 import SettingsPage from './SettingsPage'
+import style from './App.module.css'
 
 const App = () => {
   const [value, setValue] = useState(0);
@@ -21,9 +22,9 @@ const App = () => {
         textColor="primary"
         centered
       >
-        <Tab label="Add Review" />
-        <Tab label="List Reviews" />
-        <Tab label="Settings" />
+        <Tab label="Add Review" className={style.tab} />
+        <Tab label="List Reviews" className={style.tab} />
+        <Tab label="Settings" className={style.tab} />
       </Tabs>
       {value === 0 && <AddPage />}
       {value === 1 && <ListPage />}

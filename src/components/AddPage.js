@@ -58,7 +58,7 @@ const AddPage = () => {
           </div>
           <div className={style.button}>
             <Fab 
-              color="extended" 
+              color="secondary" 
               aria-label="Delete" 
             >
               <DeleteIcon />
