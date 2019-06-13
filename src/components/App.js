@@ -1,15 +1,19 @@
 import React, {useState} from 'react';
-import Tabs from '@material-ui/core/Tabs'
-import Tab from '@material-ui/core/Tab'
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import AddPage from './AddPage';
+import ListPage from './ListPage';
+import SettingsPage from './SettingsPage'
+
 const App = () => {
   const [value, setValue] = useState(0);
 
-  function handleChange(event, newValue) {
+  const handleChange = (event, newValue) => {
     setValue(newValue);
   }
 
   return (
-    <div>
+    <>
       <Tabs
         value={value} 
         onChange={handleChange}
@@ -21,10 +25,10 @@ const App = () => {
         <Tab label="List Reviews" />
         <Tab label="Settings" />
       </Tabs>
-      {value === 0 && <div>Item One</div>}
-      {value === 1 && <div>Item Two</div>}
-      {value === 2 && <div>Item Three</div>}
-    </div>
+      {value === 0 && <AddPage />}
+      {value === 1 && <ListPage />}
+      {value === 2 && <SettingsPage />}
+    </>
   );
 }
 

@@ -1,0 +1,30 @@
+.container {
+  margin-top: 20px;
+}
+
+.field {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.input {
+  width: 75%;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+  width: 75%;
+}
+
+.button {
+  margin-right: 15px;
+}
+
