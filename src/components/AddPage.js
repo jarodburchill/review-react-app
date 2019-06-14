@@ -50,10 +50,15 @@ const AddPage = (props) => {
       comments: comments,
       date: date
     });
+    resetForm();
   }
 
   const onDeleteClick = e => {
     e.preventDefault();
+    resetForm();
+  }
+
+  const resetForm = () => {
     setBusinessName("");
     setEmail("");
     setRating("");
@@ -71,6 +76,7 @@ const AddPage = (props) => {
         localStorage.setItem("reviews", reviews + ":::" + JSON.stringify(props.review));
       }
       props.setReview("");
+      props.setTabValue(1);
     }
   }, [props.review]);
 

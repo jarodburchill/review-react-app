@@ -9,12 +9,22 @@ const ListPage = (props) => {
       const reviews = localStorage.getItem("reviews");
       setReviewObjects(reviews.split(":::"));
     }
-  }, []);
+    else {
+      //tab state
+      props.setTabValue(0);
+    }
+  }, [reviewObjects]);
 
   return (
     <div>
       {reviewObjects.map((item, index) => (
-        <ListItem key={index} index={index} reviewObject={JSON.parse(item)} />
+        <ListItem
+          key={index}
+          index={index}
+          review={JSON.parse(item)}
+          reviewObjects={reviewObjects}
+          setReviewObjects={setReviewObjects}
+        />
       ))}
     </div>
   );
