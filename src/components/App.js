@@ -7,8 +7,15 @@ import SettingsPage from './SettingsPage'
 import style from './App.module.css'
 
 const App = () => {
-  const [value, setValue] = useState(0);
+  const [review, setReview] =useState({
+    businessName: '',
+    email: '',
+    rating: '',
+    comments: '',
+    date: ''
+  });
 
+  const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   }
@@ -26,7 +33,7 @@ const App = () => {
         <Tab label="List Reviews" className={style.tab} />
         <Tab label="Settings" className={style.tab} />
       </Tabs>
-      {value === 0 && <AddPage />}
+      {value === 0 && <AddPage review={review} setReview={setReview}/>}
       {value === 1 && <ListPage />}
       {value === 2 && <SettingsPage />}
     </>

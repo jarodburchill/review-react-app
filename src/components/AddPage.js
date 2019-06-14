@@ -9,7 +9,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import style from './AddPage.module.css';
 
-const AddPage = () => {
+const AddPage = (props) => {
   const dd = String(new Date().getDate()).padStart(2, '0');
   const mm = String(new Date().getMonth() + 1).padStart(2, '0');
   const yyyy = new Date().getFullYear();
@@ -39,6 +39,27 @@ const AddPage = () => {
 
   const onDateChange = e => {
     setDate(e.target.value);
+  }
+
+  const onAddClick = e => {
+    e.preventDefault();
+    props.setReview({
+      businessName: businessName,
+      email: email,
+      rating: rating,
+      comments: comments,
+      date: date
+    });
+    console.log(props.review);
+  }
+
+  const onDeleteClick = e => {
+    e.preventDefault();
+    setBusinessName("");
+    setEmail("");
+    setRating("");
+    setComments("");
+    setDate(today);
   }
 
   return (
@@ -106,7 +127,8 @@ const AddPage = () => {
           <div className={style.button}>
             <Fab 
               color="primary" 
-              aria-label="Add" 
+              aria-label="Add"
+              onClick={onAddClick}
             >
               <AddIcon />
             </Fab>
@@ -115,6 +137,7 @@ const AddPage = () => {
             <Fab 
               color="secondary" 
               aria-label="Delete" 
+              onClick={onDeleteClick}
             >
               <DeleteIcon />
             </Fab>
