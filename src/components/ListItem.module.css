@@ -1,0 +1,21 @@
+.container {
+  margin: 50px 15% 20px 15%;
+}
+
+.paper {
+  padding: 10px;
+}
+
+.businessName {
+  padding: 30px 10px;
+  color: rgb(45, 64, 185);
+}
+
+.details {
+  padding: 10px;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+}
