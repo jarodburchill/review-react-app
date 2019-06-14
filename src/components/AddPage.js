@@ -3,6 +3,10 @@ import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
+import InputLabel from '@material-ui/core/InputLabel'
+import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
+import FormControl from '@material-ui/core/FormControl'
 import style from './AddPage.module.css';
 
 const AddPage = () => {
@@ -13,6 +17,7 @@ const AddPage = () => {
 
   const [businessName, setBusinessName] = useState("");
   const [email, setEmail] = useState("");
+  const [rating, setRating] = useState("");
   const [comments, setComments] = useState("");
   const [date, setDate] = useState(today);
 
@@ -22,6 +27,10 @@ const AddPage = () => {
 
   const onEmailChange = e => {
     setEmail(e.target.value);
+  }
+
+  const onRatingChange = e => {
+    setRating(e.target.value);
   }
 
   const onCommentsChange = e => {
@@ -51,6 +60,25 @@ const AddPage = () => {
           onChange={onEmailChange}
           className={style.input}
         />
+      </div>
+      <div className={style.field}>
+        <FormControl className={style.input}>
+          <InputLabel htmlFor="rating">Rating</InputLabel>
+          <Select
+            value={rating}
+            onChange={onRatingChange}
+            inputProps={{
+              name: 'rating',
+              id: 'rating',
+            }}
+          >
+            <MenuItem value={1}>One Star</MenuItem>
+            <MenuItem value={2}>Two Stars</MenuItem>
+            <MenuItem value={3}>Three Stars</MenuItem>
+            <MenuItem value={4}>Four Stars</MenuItem>
+            <MenuItem value={5}>Five Stars</MenuItem>
+          </Select>
+        </FormControl>
       </div>
       <div className={style.field}>
         <TextField
