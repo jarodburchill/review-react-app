@@ -1,6 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
-const ListPage = () => {
+const ListPage = (props) => {
+
+  useEffect(() => {
+    
+  }, []);
+
   return (
     <div>
       2

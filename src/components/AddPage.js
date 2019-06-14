@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
@@ -50,7 +50,6 @@ const AddPage = (props) => {
       comments: comments,
       date: date
     });
-    console.log(props.review);
   }
 
   const onDeleteClick = e => {
@@ -61,6 +60,19 @@ const AddPage = (props) => {
     setComments("");
     setDate(today);
   }
+
+  useEffect(() => {
+    if (props.review !== "") {
+      if (localStorage.getItem("reviews") === null) {
+        localStorage.setItem("reviews", JSON.stringify(props.review));
+      }
+      else {
+        const reviews = localStorage.getItem("reviews");
+        localStorage.setItem("reviews", reviews + ":::" + JSON.stringify(props.review));
+      }
+      props.setReview("");
+    }
+  }, [props.review]);
 
   return (
     <div className={style.container}>
