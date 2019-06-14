@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
@@ -9,8 +9,28 @@ const AddPage = () => {
   const dd = String(new Date().getDate()).padStart(2, '0');
   const mm = String(new Date().getMonth() + 1).padStart(2, '0');
   const yyyy = new Date().getFullYear();
-
   const today = `${yyyy}-${mm}-${dd}` ;
+
+  const [businessName, setBusinessName] = useState("");
+  const [email, setEmail] = useState("");
+  const [comments, setComments] = useState("");
+  const [date, setDate] = useState(today);
+
+  const onBusinessNameChange = e => {
+    setBusinessName(e.target.value);
+  }
+
+  const onEmailChange = e => {
+    setEmail(e.target.value);
+  }
+
+  const onCommentsChange = e => {
+    setComments(e.target.value);
+  }
+
+  const onDateChange = e => {
+    setDate(e.target.value);
+  }
 
   return (
     <div className={style.container}>
@@ -18,6 +38,8 @@ const AddPage = () => {
         <TextField
           label="Business Name"
           placeholder="Required"
+          value={businessName}
+          onChange={onBusinessNameChange}
           className={style.input}
         />
       </div>
@@ -25,6 +47,8 @@ const AddPage = () => {
         <TextField
           label="Email"
           placeholder="Required"
+          value={email}
+          onChange={onEmailChange}
           className={style.input}
         />
       </div>
@@ -32,6 +56,8 @@ const AddPage = () => {
         <TextField
           label="Comments"
           multiline
+          value={comments}
+          onChange={onCommentsChange}
           className={style.input}
         />
       </div>
@@ -39,7 +65,8 @@ const AddPage = () => {
         <TextField
           label="Review Date"
           type="date"
-          defaultValue={today}
+          value={date}
+          onChange={onDateChange}
           InputLabelProps={{
             shrink: true,
           }}
