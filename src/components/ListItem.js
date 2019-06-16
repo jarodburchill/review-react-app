@@ -11,8 +11,6 @@ const ListItem = (props) => {
     props.reviewObjects.splice(props.index, 1);
     if (props.reviewObjects.length === 0) {
       localStorage.removeItem("reviews");
-
-      //weird, but works
       props.setReviewObjects([]);
     }
     else {

@@ -10,7 +10,6 @@ const ListPage = (props) => {
       setReviewObjects(reviews.split(":::"));
     }
     else {
-      //tab state
       props.setTabValue(0);
     }
   }, [reviewObjects]);
