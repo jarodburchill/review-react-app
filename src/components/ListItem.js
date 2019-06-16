@@ -8,16 +8,15 @@ import style from './ListItem.module.css';
 const ListItem = (props) => {
   const onDeleteClick = e => {
     e.preventDefault();
-    const updatedObjects = props.reviewObjects;
-    updatedObjects.splice(props.index, 1);
-    if (updatedObjects.length === 0) {
+    props.reviewObjects.splice(props.index, 1);
+    if (props.reviewObjects.length === 0) {
       localStorage.removeItem("reviews");
 
       //weird, but works
       props.setReviewObjects([]);
     }
     else {
-      localStorage.setItem("reviews", (updatedObjects.join(":::")));
+      localStorage.setItem("reviews", (props.reviewObjects.join(":::")));
     }
   }
 
