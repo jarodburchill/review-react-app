@@ -96,7 +96,6 @@ const AddPage = (props) => {
       });
     }
 
-
     return valid;
   }
 
