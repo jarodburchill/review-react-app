@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ReviewReactApp/static/css/main.98dfaaa0.chunk.css",
+    "main.js": "/ReviewReactApp/static/js/main.70cb142d.chunk.js",
+    "main.js.map": "/ReviewReactApp/static/js/main.70cb142d.chunk.js.map",
+    "runtime~main.js": "/ReviewReactApp/static/js/runtime~main.47c13d3c.js",
+    "runtime~main.js.map": "/ReviewReactApp/static/js/runtime~main.47c13d3c.js.map",
+    "static/js/2.a0066b3b.chunk.js": "/ReviewReactApp/static/js/2.a0066b3b.chunk.js",
+    "static/js/2.a0066b3b.chunk.js.map": "/ReviewReactApp/static/js/2.a0066b3b.chunk.js.map",
+    "index.html": "/ReviewReactApp/index.html",
+    "precache-manifest.320a5526aa0e496079f40ec78535abc4.js": "/ReviewReactApp/precache-manifest.320a5526aa0e496079f40ec78535abc4.js",
+    "service-worker.js": "/ReviewReactApp/service-worker.js",
+    "static/css/main.98dfaaa0.chunk.css.map": "/ReviewReactApp/static/css/main.98dfaaa0.chunk.css.map"
+  }
+}
