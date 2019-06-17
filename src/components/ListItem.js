@@ -67,6 +67,7 @@ const ListItem = (props) => {
           {props.review.businessName}
         </Typography>
         {getStars()}
+        <hr className={style.row} />
         <Typography component="p" className={style.details}>
           Reviewer: {props.review.email}
         </Typography>

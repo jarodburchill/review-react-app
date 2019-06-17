@@ -28,3 +28,8 @@
   width: 200px;
   padding: 5px;
 }
+
+.row {
+  border-color: rgba(0, 0, 0, 0.25);
+  margin: 15px 8px;
+}
