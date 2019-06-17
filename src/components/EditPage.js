@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
-import ClearIcon from '@material-ui/icons/Clear';
+import SaveIcon from '@material-ui/icons/Save';
+import CancelIcon from '@material-ui/icons/Cancel';
 import InputLabel from '@material-ui/core/InputLabel'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -103,17 +103,17 @@ const EditPage = (props) => {
           <div className={style.button}>
             <Fab 
               color="primary" 
-              aria-label="Add"
+              aria-label="Save"
             >
-              <AddIcon />
+              <SaveIcon />
             </Fab>
           </div>
           <div className={style.button}>
             <Fab 
               color="secondary" 
-              aria-label="Clear" 
+              aria-label="Cancel" 
             >
-              <ClearIcon />
+              <CancelIcon />
             </Fab>
           </div>
         </div>

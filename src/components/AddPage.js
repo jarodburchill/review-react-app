@@ -48,7 +48,7 @@ const AddPage = (props) => {
     resetForm();
   }
 
-  const onDeleteClick = e => {
+  const onClearClick = e => {
     e.preventDefault();
     resetForm();
   }
@@ -156,7 +156,7 @@ const AddPage = (props) => {
             <Fab 
               color="secondary" 
               aria-label="Clear" 
-              onClick={onDeleteClick}
+              onClick={onClearClick}
             >
               <ClearIcon />
             </Fab>
