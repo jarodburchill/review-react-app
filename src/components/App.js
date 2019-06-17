@@ -55,7 +55,7 @@ const App = () => {
       </Tabs>
       {value === 0 && <AddPage today={today} review={review} setReview={setReview} setEditReview={setEditReview} setTabValue={setValue} />}
       {value === 1 && <ListPage setEditReview={setEditReview} setTabValue={setValue} />}
-      {value === 2 && <EditPage today={today} editReview={editReview} />}
+      {value === 2 && <EditPage today={today} editReview={editReview} setTabValue={setValue} />}
     </>
   );
 }

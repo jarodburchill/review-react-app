@@ -46,21 +46,25 @@ const ListItem = (props) => {
         <Typography component="p" className={style.details}>
           Review Date: {props.review.date}
         </Typography>
-        <div className={style.button}>
-          <Fab 
-            color="primary" 
-            aria-label="Edit" 
-            onClick={onEditClick}
-          >
-            <EditIcon />
-          </Fab>
-          <Fab 
-            color="secondary" 
-            aria-label="Delete" 
-            onClick={onDeleteClick}
-          >
-            <DeleteIcon />
-          </Fab>
+        <div className={style.buttonGroup}>
+          <div className={style.button}>
+            <Fab 
+              color="primary" 
+              aria-label="Edit" 
+              onClick={onEditClick}
+            >
+              <EditIcon />
+            </Fab>
+          </div>
+          <div className={style.button}>
+            <Fab 
+              color="secondary" 
+              aria-label="Delete" 
+              onClick={onDeleteClick}
+            >
+              <DeleteIcon />
+            </Fab>
+          </div>
         </div>
       </Paper>
     </div>

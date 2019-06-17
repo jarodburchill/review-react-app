@@ -15,7 +15,11 @@
   padding: 10px;
 }
 
-.button {
+.buttonGroup {
   display: flex;
   justify-content: flex-end;
+}
+
+.button {
+  margin-left: 15px;
 }
