@@ -5,6 +5,11 @@ import Fab from '@material-ui/core/Fab';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit'
 import style from './ListItem.module.css';
+import fiveStar from '../img/5star.png';
+import fourStar from '../img/4star.png';
+import threeStar from '../img/3star.png';
+import twoStar from '../img/2star.png';
+import oneStar from '../img/1star.png';
 
 const ListItem = (props) => {
   const onEditClick = e => {
@@ -28,17 +33,42 @@ const ListItem = (props) => {
     }
   }
 
+  const getStars = () => {
+    switch (props.review.rating) {
+      case 1:
+        return (
+          <img src={oneStar} alt="1 star rating" className={style.image} />
+        );
+      case 2:
+        return (
+          <img src={twoStar} alt="2 star rating" className={style.image} />
+        );
+      case 3:
+        return (
+          <img src={threeStar} alt="3 star rating" className={style.image} />
+        );
+      case 4:
+        return (
+          <img src={fourStar} alt="4 star rating" className={style.image} />
+        );
+      case 5:
+        return (
+          <img src={fiveStar} alt="5 star rating" className={style.image} />
+        );
+      default:
+        break;
+    }
+  }
+
   return (
     <div className={style.container}>
       <Paper className={style.paper}>
         <Typography variant="h4" className={style.businessName}>
           {props.review.businessName}
         </Typography>
+        {getStars()}
         <Typography component="p" className={style.details}>
           Reviewer: {props.review.email}
-        </Typography>
-        <Typography component="p" className={style.details}>
-          Rating: {props.review.rating} Stars
         </Typography>
         <Typography component="p" className={style.details}>
           Comments: {props.review.comments}
