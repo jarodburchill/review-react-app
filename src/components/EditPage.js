@@ -10,13 +10,13 @@ import FormControl from '@material-ui/core/FormControl'
 import style from './AddEditPage.module.css';
 
 const EditPage = (props) => {
-  console.log(props.editReview);
-
   const [businessName, setBusinessName] = useState(props.editReview.review.businessName);
   const [email, setEmail] = useState(props.editReview.review.email);
   const [rating, setRating] = useState(props.editReview.review.rating);
   const [comments, setComments] = useState(props.editReview.review.comments);
   const [date, setDate] = useState(props.editReview.review.date);
+
+  const [save, setSave] = useState(false);
 
   const onBusinessNameChange = e => {
     setBusinessName(e.target.value);
@@ -37,6 +37,40 @@ const EditPage = (props) => {
   const onDateChange = e => {
     setDate(e.target.value);
   }
+
+  const onSaveClick = e => {
+    e.preventDefault();
+    props.setEditReview({
+      active: true,
+      index: props.editReview.index,
+      review: {
+        businessName: businessName,
+        email: email,
+        rating: rating,
+        comments: comments,
+        date: date
+      }
+    });
+    setSave(true);
+  }
+
+  const onCancelClick = e => {
+    e.preventDefault();
+    props.setTabValue(1);
+  }
+
+  useEffect(() => {
+    if (save) {
+      if (localStorage.getItem("reviews") === null) {
+        localStorage.setItem("reviews", JSON.stringify(props.editReview.review));
+      }
+      else {
+        const reviews = localStorage.getItem("reviews");
+        localStorage.setItem("reviews", reviews + ":::" + JSON.stringify(props.editReview.review));
+      }
+      props.setTabValue(1);
+    }
+  }, [props.editReview]);
 
   return (
     <div className={style.container}>
@@ -104,6 +138,7 @@ const EditPage = (props) => {
             <Fab 
               color="primary" 
               aria-label="Save"
+              onClick={onSaveClick}
             >
               <SaveIcon />
             </Fab>
@@ -111,7 +146,8 @@ const EditPage = (props) => {
           <div className={style.button}>
             <Fab 
               color="secondary" 
-              aria-label="Cancel" 
+              aria-label="Cancel"
+              onClick={onCancelClick}
             >
               <CancelIcon />
             </Fab>
