@@ -61,13 +61,10 @@ const EditPage = (props) => {
 
   useEffect(() => {
     if (save) {
-      if (localStorage.getItem("reviews") === null) {
-        localStorage.setItem("reviews", JSON.stringify(props.editReview.review));
-      }
-      else {
-        const reviews = localStorage.getItem("reviews");
-        localStorage.setItem("reviews", reviews + ":::" + JSON.stringify(props.editReview.review));
-      }
+      const reviewsArray = (localStorage.getItem("reviews")).split(":::");
+      reviewsArray.splice(props.editReview.index, 1);
+      reviewsArray.splice(props.editReview.index, 0, JSON.stringify(props.editReview.review));
+      localStorage.setItem("reviews", reviewsArray.join(":::"));
       props.setTabValue(1);
     }
   }, [props.editReview]);
@@ -114,6 +111,7 @@ const EditPage = (props) => {
       <div className={style.field}>
         <TextField
           label="Comments"
+          placeholder="Optional"
           multiline
           value={comments}
           onChange={onCommentsChange}

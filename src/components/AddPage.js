@@ -123,6 +123,7 @@ const AddPage = (props) => {
       <div className={style.field}>
         <TextField
           label="Comments"
+          placeholder="Optional"
           multiline
           value={comments}
           onChange={onCommentsChange}
