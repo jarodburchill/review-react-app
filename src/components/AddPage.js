@@ -52,6 +52,51 @@ const AddPage = (props) => {
       });
     }
 
+    const emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (!emailRegExp.test(email)) {
+      setEmailError({
+        text: " - must be a valid email.",
+        error: true
+      });
+      valid = false;
+    }
+    else {
+      setEmailError({
+        text: "",
+        error: false
+      })
+    }
+
+    if (rating === "") {
+      setRatingError({
+        text: " - select a rating.",
+        error: true
+      });
+      valid = false;
+    }
+    else {
+      setRatingError({
+        text: "",
+        error: false
+      });
+    }
+
+    if (date === "") {
+      setDateError({
+        text: " - select a date.",
+        error: true
+      });
+      valid = false;
+    }
+    else {
+      setDateError({
+        text: "",
+        error: false
+      });
+    }
+
+
     return valid;
   }
 
@@ -59,7 +104,7 @@ const AddPage = (props) => {
     if (liveValidation) {
       validation();
     }
-  }, [businessName]);
+  }, [businessName, email, rating, date]);
 
   const onBusinessNameChange = e => {
     setBusinessName(e.target.value);
@@ -134,16 +179,17 @@ const AddPage = (props) => {
       <div className={style.field}>
         <TextField
           label={"Business Name" + businessNameError.text}
+          error={businessNameError.error}
           placeholder="Required"
           value={businessName}
           onChange={onBusinessNameChange}
           className={style.input}
-          error={businessNameError.error}
         />
       </div>
       <div className={style.field}>
         <TextField
-          label="Email"
+          label={"Email" + emailError.text}
+          error={emailError.error}
           placeholder="Required"
           value={email}
           onChange={onEmailChange}
@@ -151,8 +197,8 @@ const AddPage = (props) => {
         />
       </div>
       <div className={style.field}>
-        <FormControl className={style.input}>
-          <InputLabel htmlFor="rating">Rating</InputLabel>
+        <FormControl error={ratingError.error} className={style.input}>
+          <InputLabel htmlFor="rating">{"Rating" + ratingError.text}</InputLabel>
           <Select
             value={rating}
             onChange={onRatingChange}
@@ -181,7 +227,8 @@ const AddPage = (props) => {
       </div>
       <div className={style.field}>
         <TextField
-          label="Review Date"
+          label={"Review Date" + dateError.text}
+          error={dateError.error}
           type="date"
           value={date}
           onChange={onDateChange}
