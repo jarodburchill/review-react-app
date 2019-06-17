@@ -7,6 +7,11 @@ import EditPage from './EditPage'
 import style from './App.module.css'
 
 const App = () => {
+  const dd = String(new Date().getDate()).padStart(2, '0');
+  const mm = String(new Date().getMonth() + 1).padStart(2, '0');
+  const yyyy = new Date().getFullYear();
+  const today = `${yyyy}-${mm}-${dd}` ;
+
   const [review, setReview] = useState("");
   const [editReview, setEditReview] = useState({
     active: false,
@@ -48,9 +53,9 @@ const App = () => {
         {getListReviewsTab()}
         {getEditReviewTab()}
       </Tabs>
-      {value === 0 && <AddPage review={review} setReview={setReview} setEditReview={setEditReview} setTabValue={setValue} />}
+      {value === 0 && <AddPage today={today} review={review} setReview={setReview} setEditReview={setEditReview} setTabValue={setValue} />}
       {value === 1 && <ListPage setEditReview={setEditReview} setTabValue={setValue} />}
-      {value === 2 && <EditPage editReview={editReview} />}
+      {value === 2 && <EditPage today={today} editReview={editReview} />}
     </>
   );
 }

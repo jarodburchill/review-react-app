@@ -11,7 +11,7 @@ const ListItem = (props) => {
     props.setEditReview({
       active: true,
       index: props.index,
-      review: props.reviewObjects[props.index]
+      review: JSON.parse(props.reviewObjects[props.index])
     });
     props.setTabValue(2);
   }

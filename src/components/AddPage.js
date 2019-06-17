@@ -2,24 +2,19 @@ import React, {useState, useEffect} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import DeleteIcon from '@material-ui/icons/Delete';
+import CancelIcon from '@material-ui/icons/Cancel';
 import InputLabel from '@material-ui/core/InputLabel'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
-import style from './AddPage.module.css';
+import style from './AddEditPage.module.css';
 
 const AddPage = (props) => {
-  const dd = String(new Date().getDate()).padStart(2, '0');
-  const mm = String(new Date().getMonth() + 1).padStart(2, '0');
-  const yyyy = new Date().getFullYear();
-  const today = `${yyyy}-${mm}-${dd}` ;
-
   const [businessName, setBusinessName] = useState("");
   const [email, setEmail] = useState("");
   const [rating, setRating] = useState("");
   const [comments, setComments] = useState("");
-  const [date, setDate] = useState(today);
+  const [date, setDate] = useState(props.today);
 
   const onBusinessNameChange = e => {
     setBusinessName(e.target.value);
@@ -63,7 +58,7 @@ const AddPage = (props) => {
     setEmail("");
     setRating("");
     setComments("");
-    setDate(today);
+    setDate(props.today);
   }
 
   useEffect(() => {
@@ -160,10 +155,10 @@ const AddPage = (props) => {
           <div className={style.button}>
             <Fab 
               color="secondary" 
-              aria-label="Delete" 
+              aria-label="Cancel" 
               onClick={onDeleteClick}
             >
-              <DeleteIcon />
+              <CancelIcon />
             </Fab>
           </div>
         </div>
