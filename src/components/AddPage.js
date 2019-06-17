@@ -10,11 +10,56 @@ import FormControl from '@material-ui/core/FormControl'
 import style from './AddEditPage.module.css';
 
 const AddPage = (props) => {
+  const [liveValidation, setLiveValidation] = useState(false);
+
   const [businessName, setBusinessName] = useState("");
   const [email, setEmail] = useState("");
   const [rating, setRating] = useState("");
   const [comments, setComments] = useState("");
   const [date, setDate] = useState(props.today);
+
+  const [businessNameError, setBusinessNameError] = useState({
+    text: "",
+    error: false
+  });
+  const [emailError, setEmailError] = useState({
+    text: "",
+    error: false
+  });
+  const [ratingError, setRatingError] = useState({
+    text: "",
+    error: false
+  });
+  const [dateError, setDateError] = useState({
+    text: "",
+    error: false
+  });
+
+  const validation = () => {
+    let valid = true;
+
+    if (businessName.length < 2) {
+      setBusinessNameError({
+        text: " - must be at least 2 characters.",
+        error: true
+      });
+      valid = false;
+    }
+    else {
+      setBusinessNameError({
+        text: "",
+        error: false
+      });
+    }
+
+    return valid;
+  }
+
+  useEffect(() => {
+    if (liveValidation) {
+      validation();
+    }
+  }, [businessName]);
 
   const onBusinessNameChange = e => {
     setBusinessName(e.target.value);
@@ -37,15 +82,18 @@ const AddPage = (props) => {
   }
 
   const onAddClick = e => {
-    e.preventDefault();
-    props.setReview({
-      businessName: businessName,
-      email: email,
-      rating: rating,
-      comments: comments,
-      date: date
-    });
-    resetForm();
+    setLiveValidation(true);
+    if (validation()) {
+      e.preventDefault();
+      props.setReview({
+        businessName: businessName,
+        email: email,
+        rating: rating,
+        comments: comments,
+        date: date
+      });
+      resetForm();
+    }
   }
 
   const onClearClick = e => {
@@ -85,11 +133,12 @@ const AddPage = (props) => {
     <div className={style.container}>
       <div className={style.field}>
         <TextField
-          label="Business Name"
+          label={"Business Name" + businessNameError.text}
           placeholder="Required"
           value={businessName}
           onChange={onBusinessNameChange}
           className={style.input}
+          error={businessNameError.error}
         />
       </div>
       <div className={style.field}>
