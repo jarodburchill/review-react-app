@@ -126,9 +126,9 @@ const AddPage = (props) => {
   }
 
   const onAddClick = e => {
+    e.preventDefault();
     setLiveValidation(true);
     if (validation()) {
-      e.preventDefault();
       props.setReview({
         businessName: businessName,
         email: email,

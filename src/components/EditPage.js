@@ -10,11 +10,100 @@ import FormControl from '@material-ui/core/FormControl'
 import style from './AddEditPage.module.css';
 
 const EditPage = (props) => {
+  const [liveValidation, setLiveValidation] = useState(false);
+
   const [businessName, setBusinessName] = useState(props.editReview.review.businessName);
   const [email, setEmail] = useState(props.editReview.review.email);
   const [rating, setRating] = useState(props.editReview.review.rating);
   const [comments, setComments] = useState(props.editReview.review.comments);
   const [date, setDate] = useState(props.editReview.review.date);
+
+  const [businessNameError, setBusinessNameError] = useState({
+    text: "",
+    error: false
+  });
+  const [emailError, setEmailError] = useState({
+    text: "",
+    error: false
+  });
+  const [ratingError, setRatingError] = useState({
+    text: "",
+    error: false
+  });
+  const [dateError, setDateError] = useState({
+    text: "",
+    error: false
+  });
+
+  const validation = () => {
+    let valid = true;
+
+    if (businessName.length < 2) {
+      setBusinessNameError({
+        text: " - must be at least 2 characters.",
+        error: true
+      });
+      valid = false;
+    }
+    else {
+      setBusinessNameError({
+        text: "",
+        error: false
+      });
+    }
+
+    const emailRegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (!emailRegExp.test(email)) {
+      setEmailError({
+        text: " - must be a valid email.",
+        error: true
+      });
+      valid = false;
+    }
+    else {
+      setEmailError({
+        text: "",
+        error: false
+      })
+    }
+
+    if (rating === "") {
+      setRatingError({
+        text: " - select a rating.",
+        error: true
+      });
+      valid = false;
+    }
+    else {
+      setRatingError({
+        text: "",
+        error: false
+      });
+    }
+
+    if (date === "") {
+      setDateError({
+        text: " - select a date.",
+        error: true
+      });
+      valid = false;
+    }
+    else {
+      setDateError({
+        text: "",
+        error: false
+      });
+    }
+
+    return valid;
+  }
+
+  useEffect(() => {
+    if (liveValidation) {
+      validation();
+    }
+  }, [businessName, email, rating, date]);
 
   const [save, setSave] = useState(false);
 
@@ -40,18 +129,21 @@ const EditPage = (props) => {
 
   const onSaveClick = e => {
     e.preventDefault();
-    props.setEditReview({
-      active: true,
-      index: props.editReview.index,
-      review: {
-        businessName: businessName,
-        email: email,
-        rating: rating,
-        comments: comments,
-        date: date
-      }
-    });
-    setSave(true);
+    setLiveValidation(true);
+    if (validation()) {
+      props.setEditReview({
+        active: true,
+        index: props.editReview.index,
+        review: {
+          businessName: businessName,
+          email: email,
+          rating: rating,
+          comments: comments,
+          date: date
+        }
+      });
+      setSave(true);
+    }
   }
 
   const onCancelClick = e => {
@@ -73,7 +165,8 @@ const EditPage = (props) => {
     <div className={style.container}>
       <div className={style.field}>
         <TextField
-          label="Business Name"
+          label={"Business Name" + businessNameError.text}
+          error={businessNameError.error}
           placeholder="Required"
           value={businessName}
           onChange={onBusinessNameChange}
@@ -82,7 +175,8 @@ const EditPage = (props) => {
       </div>
       <div className={style.field}>
         <TextField
-          label="Email"
+          label={"Email" + emailError.text}
+          error={emailError.error}
           placeholder="Required"
           value={email}
           onChange={onEmailChange}
@@ -90,8 +184,8 @@ const EditPage = (props) => {
         />
       </div>
       <div className={style.field}>
-        <FormControl className={style.input}>
-          <InputLabel htmlFor="rating">Rating</InputLabel>
+        <FormControl error={ratingError.error} className={style.input}>
+          <InputLabel htmlFor="rating">{"Rating" + ratingError.text}</InputLabel>
           <Select
             value={rating}
             onChange={onRatingChange}
@@ -120,7 +214,8 @@ const EditPage = (props) => {
       </div>
       <div className={style.field}>
         <TextField
-          label="Review Date"
+          label={"Review Date" + dateError.text}
+          error={dateError.error}
           type="date"
           value={date}
           onChange={onDateChange}
