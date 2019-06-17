@@ -3,9 +3,19 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Fab from '@material-ui/core/Fab';
 import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit'
 import style from './ListItem.module.css';
 
 const ListItem = (props) => {
+  const onEditClick = e => {
+    props.setEditReview({
+      active: true,
+      index: props.index,
+      review: props.reviewObjects[props.index]
+    });
+    props.setTabValue(2);
+  }
+
   const onDeleteClick = e => {
     e.preventDefault();
     props.reviewObjects.splice(props.index, 1);
@@ -37,6 +47,13 @@ const ListItem = (props) => {
           Review Date: {props.review.date}
         </Typography>
         <div className={style.button}>
+          <Fab 
+            color="primary" 
+            aria-label="Edit" 
+            onClick={onEditClick}
+          >
+            <EditIcon />
+          </Fab>
           <Fab 
             color="secondary" 
             aria-label="Delete" 

@@ -67,6 +67,12 @@ const AddPage = (props) => {
   }
 
   useEffect(() => {
+    props.setEditReview({
+      active: false,
+      index: null,
+      review: null
+    });
+
     if (props.review !== "") {
       if (localStorage.getItem("reviews") === null) {
         localStorage.setItem("reviews", JSON.stringify(props.review));
