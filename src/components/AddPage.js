@@ -40,7 +40,7 @@ const AddPage = (props) => {
 
     if (businessName.length < 2) {
       setBusinessNameError({
-        text: " - must be at least 2 characters.",
+        text: " - at least 2 characters.",
         error: true
       });
       valid = false;
