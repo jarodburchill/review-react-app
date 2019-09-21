@@ -1,6 +1,6 @@
 {
-  "homepage": "https://jarodburchill.github.io/ReviewReactApp",
-  "name": "review",
+  "homepage": "https://jarodburchill.github.io/review-react-app",
+  "name": "review-react-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
