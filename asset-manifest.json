@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/ReviewReactApp/static/css/main.12a5c71e.chunk.css",
-    "main.js": "/ReviewReactApp/static/js/main.086d2a70.chunk.js",
-    "main.js.map": "/ReviewReactApp/static/js/main.086d2a70.chunk.js.map",
-    "runtime~main.js": "/ReviewReactApp/static/js/runtime~main.47c13d3c.js",
-    "runtime~main.js.map": "/ReviewReactApp/static/js/runtime~main.47c13d3c.js.map",
-    "static/js/2.a0066b3b.chunk.js": "/ReviewReactApp/static/js/2.a0066b3b.chunk.js",
-    "static/js/2.a0066b3b.chunk.js.map": "/ReviewReactApp/static/js/2.a0066b3b.chunk.js.map",
-    "index.html": "/ReviewReactApp/index.html",
-    "precache-manifest.322020eb87497fa8f39f1383990f9404.js": "/ReviewReactApp/precache-manifest.322020eb87497fa8f39f1383990f9404.js",
-    "service-worker.js": "/ReviewReactApp/service-worker.js",
-    "static/css/main.12a5c71e.chunk.css.map": "/ReviewReactApp/static/css/main.12a5c71e.chunk.css.map"
+    "main.css": "/review-react-app/static/css/main.9c40c92f.chunk.css",
+    "main.js": "/review-react-app/static/js/main.78065d6a.chunk.js",
+    "main.js.map": "/review-react-app/static/js/main.78065d6a.chunk.js.map",
+    "runtime~main.js": "/review-react-app/static/js/runtime~main.e7e9871d.js",
+    "runtime~main.js.map": "/review-react-app/static/js/runtime~main.e7e9871d.js.map",
+    "static/js/2.a0066b3b.chunk.js": "/review-react-app/static/js/2.a0066b3b.chunk.js",
+    "static/js/2.a0066b3b.chunk.js.map": "/review-react-app/static/js/2.a0066b3b.chunk.js.map",
+    "index.html": "/review-react-app/index.html",
+    "precache-manifest.5371699c9565fe27f5b99ae89d687862.js": "/review-react-app/precache-manifest.5371699c9565fe27f5b99ae89d687862.js",
+    "service-worker.js": "/review-react-app/service-worker.js",
+    "static/css/main.9c40c92f.chunk.css.map": "/review-react-app/static/css/main.9c40c92f.chunk.css.map"
   }
 }
